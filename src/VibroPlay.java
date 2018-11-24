@@ -38,7 +38,7 @@ import javax.swing.event.ChangeListener;
 
 public class VibroPlay extends JFrame {
     	/**
-	 * Кравцов Иван Александрович 2018г. г.Волгоград
+	 * Kravtsov Iva Alexandrovich 2018г. c.Volgograd
 	 */
    private static String TAG = "DEBUG";
    private static final long serialVersionUID = 1L;
@@ -46,15 +46,15 @@ public class VibroPlay extends JFrame {
    private static int NUMBER_OF_SAMPLES = 0;
    private static float max, min;
    private static double RMS;
-   private static String title = "нет открытого файла";
+   private static String title = "no file";
    private static final int LINES = 10;
    static private JLabel labelRMS = new JLabel();
    static private JSlider zoomer = new JSlider();
    static private JButton btnZoom= new JButton("ZOOM");
-   static private JButton btnOpen = new JButton("Открыть файл с сэмплами");
-   static private JButton btnPlay = new JButton("Воспроизвести открытый файл");
-   static private JButton btnStop = new JButton("Остановить воспроизведение");
-   static private JButton btnSpeed = new JButton("Изменить скорость");
+   static private JButton btnOpen = new JButton("OPEN FILE");
+   static private JButton btnPlay = new JButton("PLAY");
+   static private JButton btnStop = new JButton("STOP");
+   static private JButton btnSpeed = new JButton("Change speed");
    static private JLabel labelSamples = new JLabel(); //число сэмплов в файле (не редактируется, для информации)
    static private JLabel labelTime = new JLabel(); //время воспроизведения при текущих настройках (не редактируется, для информации)
    static private JLabel labelMaximum = new JLabel(); //максимум (не редактируется, для информации)
@@ -67,7 +67,7 @@ public class VibroPlay extends JFrame {
    private static ArrayList<Float> inputData = new ArrayList<>(); // нормализованный сигнал к амплитуде от -120 до +120 для аудио
    private static ArrayList<Float> defaultinputData = new ArrayList<>(); //оригинал данных сигнала из файла
    private static String lineContents;
-   private static String message = "Буфер пуст! Откройте файл с сэмплами!";
+   private static String message = "Buffer is empty! Open file please!";
    private static VibroPlay app;
    private static int i = 0;
    private static String s = "";
@@ -162,7 +162,7 @@ class DrawComponent extends JComponent{
 	}
 	 	
    public VibroPlay() {
-	    super("Виброплеер V1.1 Кравцов И.А.");
+	    super("Vibroplayer V1.1 Kravtsov I.A.");
 	    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    this.setResizable(false);
 	    labelSamples.setText(Integer.toString(NUMBER_OF_SAMPLES));
@@ -208,7 +208,7 @@ class DrawComponent extends JComponent{
 	    constraints.fill = GridBagConstraints.HORIZONTAL;
 	    constraints.gridx = 0;
 	    constraints.gridy = 0;
-	    container1.add(new JLabel("Частота сэмплирования: ", SwingConstants.RIGHT), constraints);
+	    container1.add(new JLabel("Sample rate: ", SwingConstants.RIGHT), constraints);
 	    
 	    constraints.fill = GridBagConstraints.HORIZONTAL;
 	    constraints.gridx = 1;
@@ -218,7 +218,7 @@ class DrawComponent extends JComponent{
 	    constraints.fill = GridBagConstraints.HORIZONTAL;
 	    constraints.gridx = 0;
 	    constraints.gridy = 1;
-	    container1.add(new JLabel("Число сэмплов: ", SwingConstants.RIGHT), constraints);
+	    container1.add(new JLabel("Samples: ", SwingConstants.RIGHT), constraints);
 	    
 	    constraints.fill = GridBagConstraints.HORIZONTAL;
 	    constraints.gridx = 1;
@@ -228,7 +228,7 @@ class DrawComponent extends JComponent{
 	    constraints.fill = GridBagConstraints.HORIZONTAL;
 	    constraints.gridx = 0;
 	    constraints.gridy = 2;
-	    container1.add(new JLabel("Открыт файл: ", SwingConstants.RIGHT), constraints);
+	    container1.add(new JLabel("Opened: ", SwingConstants.RIGHT), constraints);
 	    
 	    constraints.fill = GridBagConstraints.HORIZONTAL;
 	    constraints.gridx = 1;
@@ -253,7 +253,7 @@ class DrawComponent extends JComponent{
 	    constraints.fill = GridBagConstraints.HORIZONTAL;
 	    constraints.gridx = 0;
 	    constraints.gridy = 4;
-	    container1.add(new JLabel("Максимум в сигнале: ", SwingConstants.RIGHT), constraints);
+	    container1.add(new JLabel("MAX: ", SwingConstants.RIGHT), constraints);
 	    
 	    constraints.fill = GridBagConstraints.HORIZONTAL;
 	    constraints.gridx = 1;
@@ -263,7 +263,7 @@ class DrawComponent extends JComponent{
 	    constraints.fill = GridBagConstraints.HORIZONTAL;
 	    constraints.gridx = 0;
 	    constraints.gridy = 5;
-	    container1.add(new JLabel("Минимум в сигнале: ", SwingConstants.RIGHT), constraints);
+	    container1.add(new JLabel("MIN: ", SwingConstants.RIGHT), constraints);
 	    
 	    constraints.fill = GridBagConstraints.HORIZONTAL;
 	    constraints.gridx = 1;
@@ -273,7 +273,7 @@ class DrawComponent extends JComponent{
 	    constraints.fill = GridBagConstraints.HORIZONTAL;
 	    constraints.gridx = 0;
 	    constraints.gridy = 6;
-	    container1.add(new JLabel("СКЗ: ", SwingConstants.RIGHT), constraints);
+	    container1.add(new JLabel("RMS: ", SwingConstants.RIGHT), constraints);
 	    
 	    constraints.fill = GridBagConstraints.HORIZONTAL;
 	    constraints.gridx = 1;
@@ -298,7 +298,7 @@ class DrawComponent extends JComponent{
 	    constraints.fill = GridBagConstraints.HORIZONTAL;
 	    constraints.gridx = 0;
 	    constraints.gridy = 11;
-	    container1.add(new JLabel("Время воспроизведения: ", SwingConstants.RIGHT), constraints);
+	    container1.add(new JLabel("Time play: ", SwingConstants.RIGHT), constraints);
 	    
 	    constraints.fill = GridBagConstraints.HORIZONTAL;
 	    constraints.gridx = 1;
@@ -345,20 +345,20 @@ class DrawComponent extends JComponent{
    class ButtonEventListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			switch (e.getActionCommand()){
-			case "Воспроизвести открытый файл":
+			case "PLAY":
 				myThread.setStop(false);
 				checkBuffer(inputData);
 			break;
-			case "Остановить воспроизведение":
+			case "STOP":
 				myThread.setStop(true);
 				myThread.getLine().stop();
 
 			break;
-			case "Открыть файл с сэмплами":
+			case "OPEN FILE":
 				OpenFile();
 				timeSet();
 			break;
-			case "Изменить скорость":
+			case "Change speed":
 				timeSet();
 			break;
 			case "ZOOM":
@@ -375,10 +375,10 @@ class DrawComponent extends JComponent{
 			textFieldSamplesRate.setText(Integer.toString(Math.abs(Integer.parseInt(labelSamples.getText()) * Integer.parseInt(textFieldSamplesSpeed.getText())/100)));
 			if(Integer.parseInt(textFieldSamplesRate.getText()) != 0){
 			    i = 1000 * Integer.parseInt(labelSamples.getText())/Integer.parseInt(textFieldSamplesRate.getText());
-			    s =Integer.toString(i) + " мс";
+			    s =Integer.toString(i) + " ms";
 		    	labelTime.setText(s);	
 		    }else{
-		    	labelTime.setText("0 мс");
+		    	labelTime.setText("0 ms");
 		    }
 		}
 	}
@@ -452,7 +452,7 @@ class DrawComponent extends JComponent{
 	   		case 0:
 	   			JOptionPane.showMessageDialog(null,
 			    		message,
-			    		"Внимание!",
+			    		"Warning!",
 			    	    JOptionPane.PLAIN_MESSAGE);
 	   		break;
 	   		case 1:
