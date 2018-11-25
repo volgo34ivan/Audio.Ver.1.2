@@ -2,15 +2,15 @@ package Interfaces;
 
 import java.util.ArrayList;
 /**
- *Основные настройки программы(различные константы)
+ *  Basic program settings (various constants)
 */
 public interface SettingsGeneral {
-    int DEFAULT_WIDTH = 1000; //стандартная ширина окна графика сигнала
-    int DEFAULT_HEIGHT = 250; //стандартная высота окна графика сигнала
-    int NUMBER_OF_SAMPLES = 0; // количество сэмплов на момент включения программы
-    int LINES = 10; //количество вертикальных линий в окне графика сигнала
-    String title = "no file"; //подсказка, что никакой файл не открыт
-    String message = "Buffer is empty! Open file please!"; //подсказка о том, что пользователь не открыл файл
-    ArrayList<Float> inputData = new ArrayList<>(); // нормализованный сигнал к амплитуде от -120 до +120 для аудио
-    ArrayList<Float> defaultinputData = new ArrayList<>(); //оригинал данных сигнала из файла
+    int DEFAULT_WIDTH = 1000; // standard width of the signal graph window
+    int DEFAULT_HEIGHT = 250; // standard height of the signal graph window
+    int NUMBER_OF_SAMPLES = 0; // number of samples at the moment the program was turned on
+    int LINES = 10; // number of vertical lines in the signal graph window
+    String title = "no file"; // hint that no file is open
+    String message = "Buffer is empty! Open file please!"; // hint that the user has not opened the file
+    ArrayList<Float> inputData = new ArrayList<>(); // normalized signal to amplitude from -120 to +120 for audio
+    ArrayList<Float> defaultinputData = new ArrayList<>(); // original signal data from file
 }

@@ -4,8 +4,8 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.SourceDataLine;
 
 /**
- * Этот класс запскает поток воспроизведения.
- * Данные берутся из массива byte[] out
+ * This class will play back a stream.
+ * Data is taken from the array byte[] out
  */
 
 public class MyThread implements Runnable {

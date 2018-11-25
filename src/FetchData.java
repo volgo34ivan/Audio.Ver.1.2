@@ -6,7 +6,7 @@ import java.io.*;
 import java.util.ArrayList;
 
     /**
-    *Этот класс предназначен для получения данных из файлов
+    *   This class is designed to get data from files.
     */
 public class FetchData implements SettingsGUI, SettingsGeneral {
 
@@ -31,7 +31,7 @@ public class FetchData implements SettingsGUI, SettingsGeneral {
     }
 
     /** OpenFile
-     * Стандартный метод для вывода окна проводника java для выбора файла с данынми сигнала
+     *  The standard method for displaying a java explorer window to select a file with signal data.
      */
 
     public static void OpenFile(){
@@ -54,12 +54,12 @@ public class FetchData implements SettingsGUI, SettingsGeneral {
     }
 
     /**loadBuffer
-     * этот метод берет данные из *.txt файла
-     * в настоящее время реализован как загрузчик с 19-й строки в файле
-     * позже будет переделан как универсальный загрузчик
-     * данные берутся из файла в таком виде
-     * колонка 1(время) (табуляция) Колонка 2(мгновенное значение)
-     * 0.00000  1.12345 << важно, чтобы эта строка была под номером 19 !
+     * this method takes data from the * .txt file
+     * currently implemented as a bootloader from the 19th line in the file
+     * later will be redone as a universal loader
+     * data is taken from a file in this form:
+     * column 1 (time) (tabulation) column 2 (instantaneous value)
+     * 0.00000  1.12345 << it is important that this line is number 19 !
      * 0.00100  -1.23452
      * 0.00200  4.32123
      */
@@ -74,7 +74,6 @@ public class FetchData implements SettingsGUI, SettingsGeneral {
                 int row = 1;
                 while((lineContents = bReader.readLine()) != null){
                     row++;
-                    //if(lineContents.split("\t")[0].equals("мсек")){enter = true;}
                     if(row == 19){enter = true;}
                     if(enter){
                         if(subEnter){
@@ -95,9 +94,9 @@ public class FetchData implements SettingsGUI, SettingsGeneral {
     }
 
     /**reAmp
-     * этот метод конвертирует сигнал до уровня от -120 до +120
-     * если максимум в сигнале 200, то 200 станет равно 120
-     * остальные числа изменятся пропорционально максимального
+     * this method converts the signal to a level from -120 to +120
+     * if the maximum in the signal is 200, then 200 will become equal to 120
+     * other numbers will change in proportion to the maximum
      */
 
     public static void reAmp (){
@@ -119,8 +118,8 @@ public class FetchData implements SettingsGUI, SettingsGeneral {
     }
 
     /**createWaveBuffer
-     * этот метод создает буфер данных для воспроизведения
-     * возвращает буфер данных в виде массива чисел в формате byte
+     * This method creates a data buffer for playback.
+     * returns the data buffer as an array of numbers in the byte format.
      */
 
     public static byte[] createWaveBuffer() {
@@ -130,8 +129,8 @@ public class FetchData implements SettingsGUI, SettingsGeneral {
     }
 
     /**checkBuffer
-     * этот метод проверят содержимое буфера
-     * если буфер не будет пуст, то запустится воспроизведение сигнала
+     * this method will check the contents of the buffer
+     * if the buffer is not empty, the signal will start playing
      */
 
     public static void checkBuffer(ArrayList<Float> list){
@@ -152,8 +151,8 @@ public class FetchData implements SettingsGUI, SettingsGeneral {
     }
 
     /**FloatArray2ByteArray
-     * этот метод конвертирует массив значений в формате Float
-     * в массив значений формата Byte
+     * this method converts an array of float values
+     * to array of Byte format values
      */
 
     public static byte[] FloatArray2ByteArray(float[] values){
@@ -167,9 +166,9 @@ public class FetchData implements SettingsGUI, SettingsGeneral {
     }
 
     /**varUp
-     * Этот метод округляет число double до целого.
-     * Округление всегда в большую сторону
-     * Например 3,05 или 3,1 станет равно 4, 3,9 тоже будет 4.
+     * This method rounds double to integer.
+     * Rounding is always in a big way.
+     * For example, 3.05 or 3.1 will be equal to 4, 3.9 will also be 4.
      */
 
     public static int varUp(double d){

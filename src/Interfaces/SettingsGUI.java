@@ -3,7 +3,7 @@ package Interfaces;
 import javax.swing.*;
 
 /**
- * Основные настройки элементов пользовательского интерфейса.
+ * Basic user interface settings.
  */
 
 public interface SettingsGUI {
@@ -14,11 +14,11 @@ public interface SettingsGUI {
     JButton btnPlay = new JButton("PLAY");
     JButton btnStop = new JButton("STOP");
     JButton btnSpeed = new JButton("Change speed");
-    JLabel labelSamples = new JLabel(); //число сэмплов в файле (не редактируется, для информации)
-    JLabel labelTime = new JLabel(); //время воспроизведения при текущих настройках (не редактируется, для информации)
-    JLabel labelMaximum = new JLabel(); //максимум (не редактируется, для информации)
-    JLabel labelMinimum = new JLabel(); //минимум (не редактируется, для информации)
-    JLabel labelFileName = new JLabel(); //имя открытого файла
-    JTextField textFieldSamplesRate = new JTextField(); //поле ввода частоты сэмплирование (n точек в секунду)
-    JTextField textFieldSamplesSpeed = new JTextField(); //скорость воспроизведения в %
+    JLabel labelSamples = new JLabel(); // number of samples in the file (not editable, for information)
+    JLabel labelTime = new JLabel(); // playback time at current settings (not editable, for information)
+    JLabel labelMaximum = new JLabel(); // maximum (not editable, for information)
+    JLabel labelMinimum = new JLabel(); // minimum (not editable, for information)
+    JLabel labelFileName = new JLabel(); // name of the open file
+    JTextField textFieldSamplesRate = new JTextField(); // sampling frequency input field (n points per second)
+    JTextField textFieldSamplesSpeed = new JTextField(); // playback speed in%
 }

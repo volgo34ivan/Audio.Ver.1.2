@@ -30,12 +30,12 @@ public class VibroPlay extends JFrame  implements SettingsGeneral, SettingsGUI {
 	static Thread thread;
 	static String s = "";
 	static int i = 0;
-	static int NORM = 1000; //Число точек графика сигнала по оси Х
-	static int SAMPLE_RATE = 0; //Частота сэмплирования
-	static double RMS; //средеквадратичное значение сигнала
+	static int NORM = 1000; // The number of points of the signal graph along the X axis
+	static int SAMPLE_RATE = 0; // Sampling frequency
+	static double RMS; // RMS Signal Value
 
 	/** DrawComponent
-	 *  Этот метод предназначен для вывода графика сигнала
+	 *  This method is intended to output a signal graph.
 	 */
    
 class DrawComponent extends JComponent{
@@ -122,8 +122,8 @@ class DrawComponent extends JComponent{
 	}
 
 	/** VibroPlay
-	 *  Запускается при создании программного интерфейса.
-	 *  Это конструктор главного класса.
+	 * 	Runs when creating a software interface.
+	 * 	This is the main class constructor.
 	 */
 	 	
    public VibroPlay() {
@@ -150,21 +150,21 @@ class DrawComponent extends JComponent{
 	    
 	    Canvas = new DrawComponent();
 	    
-	    /** Здесь происходит компоновка элементов пользовательского интерфейса
-	     * Настройка разметки по умолчанию
-	     * По умолчанию натуральная высота и максимальная ширина
-	     */
+	    	/** Here is the layout of user interface elements
+			 * 	Setting default markup.
+			 * 	By default, natural height and maximum width.
+			 */
 
 	    GridBagConstraints constraints = new GridBagConstraints();
 	    constraints.fill = GridBagConstraints.HORIZONTAL;
 	    constraints.weightx = 0.5;
-	    constraints.gridy = 0; //нулевя ячейка таблицы по вертикали
+	    constraints.gridy = 0; // zero table cell vertically
 
-	    JPanel container1 = new JPanel ();//контейнер для панели управления
+	    JPanel container1 = new JPanel ();// container for control panel
 	    container1.setLayout(new GridBagLayout());
 	    container1.setBackground(new Color(48,185,192));
 	      
-	    JPanel container2 = new JPanel (); //контейнер для графика
+	    JPanel container2 = new JPanel (); // container for graphics
 	    container2.setLayout(new GridLayout(1,1));
 	    container2.setBackground(new Color(0,0,0));
 	    
@@ -296,7 +296,7 @@ class DrawComponent extends JComponent{
 	}
 
 	/**
-	 * Действия, выполняемые при взаимодействии с пользовательским интерфейсом
+	 * Actions performed when interacting with the user interface
 	 */
    
    class ButtonEventListener implements ActionListener {
@@ -330,7 +330,7 @@ class DrawComponent extends JComponent{
 	}
 
 	/** start
-	 * Этот метод запускает воспроизведение сигнала.
+	 * This method starts the playback of the signal.
 	 */
 
     public static void start(){
@@ -339,8 +339,8 @@ class DrawComponent extends JComponent{
 	}
 
 	/** main
-	 *  Старт программы начинается здесь.
-	 *  Эту подробность можно было опустить, но она намеренно оставлена разработчиком. :)
+	 * 	The program starts here.
+	 * 	This detail could be omitted, but it was intentionally left by the developer. :)
 	 */
    
    public static void main(String[] args) {
