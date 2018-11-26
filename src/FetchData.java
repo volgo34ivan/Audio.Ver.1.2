@@ -13,6 +13,7 @@ public class FetchData implements SettingsGUI, SettingsGeneral {
     private static File file;
     private static String lineContents;
     private static float max, min;
+    private static String[] lineInput = new String[2];
 
     public static void setMax(float max) {
         FetchData.max = max;
@@ -55,8 +56,7 @@ public class FetchData implements SettingsGUI, SettingsGeneral {
 
     /**loadBuffer
      * this method takes data from the * .txt file
-     * currently implemented as a bootloader from the 19th line in the file
-     * later will be redone as a universal loader
+     * redone as a universal loader
      * data is taken from a file in this form:
      * column 1 (time) (tabulation) column 2 (instantaneous value)
      * 0.00000  1.12345 << it is important that this line is number 19 !
@@ -65,23 +65,26 @@ public class FetchData implements SettingsGUI, SettingsGeneral {
      */
 
     public static void loadBuffer(){
-        boolean enter = false;
-        boolean subEnter = false;
+        boolean enter;
+        int count = 0;
         try {
             BufferedReader bReader = new BufferedReader(new FileReader(file));
             try {
                 int c = 0;
-                int row = 1;
                 while((lineContents = bReader.readLine()) != null){
-                    row++;
-                    if(row == 19){enter = true;}
+                    lineInput = lineContents.split("\t");
+                    try{
+                        float lineElementOne = Float.parseFloat(lineInput[0]); //created for take exception
+                    	enter = true;
+                    }catch(NumberFormatException nfe){
+                    	count++;
+                    	System.out.println(count);
+                    	enter = false;
+                    }
                     if(enter){
-                        if(subEnter){
                             inputData.add(Float.parseFloat(lineContents.split("\t")[1]));
                             defaultinputData.add(Float.parseFloat(lineContents.split("\t")[1]));
                             c++;
-                        }
-                        subEnter = true;
                     }
                 }
                 bReader.close();
